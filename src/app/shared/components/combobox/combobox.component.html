@@ -1,0 +1,12 @@
+<div class="h-10 w-full relative" tabindex="-1" #wrap>
+    <input type="text" [value]="value + 1" (focus)="showOptions = true"
+        class="w-full h-full px-2 border border-content rounded focus:border-none focus:outline focus:outline-primary text-content focus:text-primary bg-transparent">
+    <div *ngIf="showOptions" class="sticky top-full pt-2 bg-transparent min-w-full">
+        <ul class="border rounded overflow-hidden w-full bg-transparent">
+            <li *ngFor="let option of options" (click)="onChooseOption(option.value)"
+                class="cursor-pointer bg-transparent p-2 hover:bg-primary">
+                {{option.display}}
+            </li>
+        </ul>
+    </div>
+</div>

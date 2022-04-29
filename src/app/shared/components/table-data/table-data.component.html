@@ -1,0 +1,16 @@
+<table class="w-full bg-background uppercase text-content border rounded overflow-hidden shadow-md">
+    <thead class="bg-paper">
+        <tr>
+            <th *ngFor="let column of columns" class="p-2">
+                {{column.display}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of data" class="hover:bg-paper">
+            <td *ngFor="let column of columns" class="p-2">
+                {{column.key ? row[column.key] : column?.show(row) }}
+            </td>
+        </tr>
+    </tbody>
+</table>

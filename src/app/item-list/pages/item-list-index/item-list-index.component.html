@@ -1,0 +1,21 @@
+<div class="p-2">
+
+    <div class="m-2 w-48">
+        <app-date-picker></app-date-picker>
+    </div>
+    
+    <app-loading [loading]="loading">
+        <app-table-data 
+            [columns]="columns" 
+            [data]="groupPage.content">
+        </app-table-data>
+    </app-loading>
+    
+    <app-pagination 
+        [page]="groupPage.page" 
+        [size]="groupPage.size" 
+        [totals]="groupPage.totalElements"
+        [pages]="groupPage.totalPages" 
+        (pageChange)="onPageChange($event)"
+    ></app-pagination>
+</div>

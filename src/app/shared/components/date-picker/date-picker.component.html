@@ -1,0 +1,34 @@
+<div class="relative h-10 w-full">
+    <input type="text" (focus)="openPicker()" class="w-full h-full px-2 rounded border border-paper bg-transparent text-content
+        focus:border-none focus:outline focus:outline-primary focus:text-primary">
+    <div *ngIf="showPicker" class="absolute top-full pt-2 z-10">
+        <table class="bg-background rounded overflow-hidden border border-primary shadow">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        <select [value]="pickerValue.month()" class="bg-background">
+                            <option *ngFor="let month of monthOfYear; let i = index" [value]="i">
+                                {{monthOfYear[i]}}
+                            </option>
+                        </select>
+                    </th>
+                    <th colspan="4">
+                        {{ pickerValue.year() }}
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let dw of dayInWeek" class="p-2 text-primary">
+                        {{dw}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of pickerItems.keys(); let rowIndex = index">
+                    <td *ngFor="let col of pickerItems.get(row)" class="cursor-pointer hover:bg-primary rounded text-center">
+                        {{col.text}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

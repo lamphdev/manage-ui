@@ -1,0 +1,26 @@
+<div class="w-full h-screen bg-background flex justify-center items-center">
+    <div class="w-full sm:w-auto px-5 py-10 rounded shadow-md">
+        <div class="p-5 bg-paper border rounded shadow-md relative">
+            <h3 class="uppercase absolute top-0 left-0 leading-3">Sign of Moderate</h3>
+
+            <form action="" [formGroup]="form" (ngSubmit)="handleSubmit()">
+                <div>
+                    <label for="control1">Control 1</label>
+                    <input type="text" name="control1" formControlName="control1">
+                </div>
+
+                <div>
+                    <label for="control2">Control Last</label>
+                    <input type="text" name="control2" formControlName="control2">
+                </div>
+
+                <div>
+                    <label for="re">Remember</label>
+                    <input type="checkbox" name="re" formControlName="controlCheckbox">
+                </div>
+
+                <button>Save</button>
+            </form>
+        </div>
+    </div>
+</div>
