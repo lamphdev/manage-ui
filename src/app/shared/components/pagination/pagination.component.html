@@ -1,7 +1,10 @@
 <div class="flex justify-items-center items-center mt-2">
     <app-button (click)="previous()">pre</app-button>
     <div class="w-12 mx-2">
-        <app-combobox [options]="pageOptions" [value]="page" (onChange)="changePage($event)">
+        <app-combobox 
+            [options]="pageOptions" 
+            [value]="page" 
+            (onChange)="changePage($event)">
         </app-combobox>
     </div>
     <app-button (click)="next()">next</app-button>

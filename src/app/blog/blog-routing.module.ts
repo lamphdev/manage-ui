@@ -11,6 +11,14 @@ const routes: Routes = [
   {
     path: 'posts/create',
     component: CreatePostComponent
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: 'series',
+    loadChildren: () => import('./series/series.module').then(m => m.SeriesModule)
   }
 ];
 

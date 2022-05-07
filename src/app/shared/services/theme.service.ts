@@ -7,6 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class ThemeService {
 
   themeObserver$ = new BehaviorSubject<string>('theme-dark');
+  private showHeader = false;
+  private showSideBar = false;
 
   constructor() { }
 
@@ -16,6 +18,24 @@ export class ThemeService {
 
   set currentTheme(newTheme: string) {
     this.themeObserver$.next(newTheme);
+  }
+
+  get isShowHeader(): boolean {
+    return this.showHeader;
+  }
+
+  setShowHeader(val: boolean) {
+    setTimeout(() => {
+      this.showHeader = val;
+    })
+  }
+
+  get isShowSideBar() {
+    return this.showSideBar;
+  }
+
+  setShowSideBar(val: boolean) {
+    setTimeout(() => this.showSideBar = val);
   }
 
 }

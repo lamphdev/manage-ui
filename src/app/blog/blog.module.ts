@@ -6,6 +6,7 @@ import { PostListComponent } from './pages/post-list/post-list.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ThemeService } from '../shared/services/theme.service';
 
 
 @NgModule({
@@ -21,4 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
   ]
 })
-export class BlogModule { }
+export class BlogModule { 
+
+  constructor(private themeService: ThemeService) {
+    themeService.setShowHeader(true);
+    themeService.setShowSideBar(true);
+  }
+  
+}

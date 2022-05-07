@@ -1,0 +1,11 @@
+<div class="bg-transparent">
+    <input 
+        [type]="type" 
+        (blur)="_onTouched($event); onBlur()"
+        (focus)="onFocus()"
+        (change)="onInputChange($event)"
+        (keyup)="onKeyPress($event)"
+        class="bg-transparent text-content border border-content h-10 rounded 
+        outline-none px-2 w-full
+        focus:border-primary focus:text-primary">
+</div>

@@ -1,3 +1,21 @@
 <div [ngClass]="themeClass" class="bg-background w-full h-screen text-content">
-  <router-outlet></router-outlet>
+
+  <div class="fixed h-screen top-0 left-72 right-0">
+
+    <header *ngIf="themeService.isShowHeader" 
+      class="sticky w-full h-12 top-0 px-2 bg-paper border-l border-background">
+      <app-header></app-header>
+    </header>
+
+    <div class="p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <nav *ngIf="themeService.isShowSideBar" 
+    class="fixed w-72 h-screen top-0 left-0 bg-paper">
+    <app-side-bar></app-side-bar>
+  </nav>
+
+
 </div>

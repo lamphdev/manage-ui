@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -19,15 +19,16 @@ export interface ControlOptions {
     }
   ]
 })
-export class ComboboxComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class ComboboxComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
 
   @Input() options: ControlOptions[] = [];
   @Input() value: any;
 
   @Output() onChange = new EventEmitter<any>();
   unsubscribe$ = new Subject<void>();
-  ontouchedFn = (e: any) => { };
   showOptions = false;
+  optionSelected: ControlOptions;
+  ontouchedFn = (e: any) => { };
   eventHandle = (e: any) => { };
 
   constructor(private el: ElementRef) { }
@@ -40,6 +41,13 @@ export class ComboboxComponent implements OnInit, OnDestroy, ControlValueAccesso
       }
     };
     document.addEventListener('click', this.eventHandle);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const option = this.options.find(item => item.value === this.value);
+    if (option) {
+      this.optionSelected = option;
+    }
   }
 
   ngOnDestroy(): void {
@@ -73,9 +81,10 @@ export class ComboboxComponent implements OnInit, OnDestroy, ControlValueAccesso
    * handle when user select an options
    * @param value value of option selected
    */
-  onChooseOption(value: any) {
-    if (value !== this.value) {
-      this.updateValue(value);
+  onChooseOption(option: ControlOptions) {
+    if (option !== this.value) {
+      this.optionSelected = option;
+      this.updateValue(option.value);
     }
     setTimeout(() => {
       this.showOptions = false;

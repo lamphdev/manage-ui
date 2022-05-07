@@ -1,0 +1,24 @@
+<div class="flex justify-center">
+    <h1 class="leading-2 text-primary">List Of Series</h1>
+</div>
+
+<div>
+    <app-loading [loading]="loadingTask !== 0">
+        <app-table-data 
+            [data]="seriesPage.content"
+        >
+        <ng-template table-head>
+            <tr>
+                <th class="p-2">ID</th>
+                <th class="p-2">Name</th>
+                <th class="p-2">Description</th>
+            </tr>
+        </ng-template>
+        <ng-template table-row let-row>
+            <tr>
+                <td>{{row.ID}}</td>
+            </tr>
+        </ng-template>
+        </app-table-data>
+    </app-loading>
+</div>

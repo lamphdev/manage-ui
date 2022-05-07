@@ -5,17 +5,35 @@
     </div>
     
     <app-loading [loading]="loading">
-        <app-table-data 
-            [columns]="columns" 
+        <app-table-data
             [data]="groupPage.content">
+            <ng-template table-head>
+                <tr class="uppercase bg-paper text-left">
+                    <th class="p-2">ID</th>
+                    <th class="p-2">Name</th>
+                    <th class="p-2">Description</th>
+                    <th class="p-2">Status</th>
+                </tr>
+            </ng-template>
+            <ng-template table-row let-row="row" let-index="index">
+                <tr class="hover:bg-paper">
+                    <td class="p-2" (click)="openDialog()">{{row.id}}</td>
+                    <td class="p-2">{{row.name}}</td>
+                    <td class="p-2">{{row.description}}</td>
+                    <td class="p-2">
+                        <span *ngIf="row.status === 1" class="table p-2 rounded bg-success">Active</span>
+                        <span *ngIf="row.status !== 1" class="table p-2 rounded bg-error">DeActive</span>
+                    </td>
+                </tr>
+            </ng-template>
         </app-table-data>
     </app-loading>
     
     <app-pagination 
         [page]="groupPage.page" 
-        [size]="groupPage.size" 
-        [totals]="groupPage.totalElements"
-        [pages]="groupPage.totalPages" 
+        [size]="groupPage.limit" 
+        [totals]="groupPage.totals"
+        [pages]="groupPage.pages" 
         (pageChange)="onPageChange($event)"
     ></app-pagination>
 </div>

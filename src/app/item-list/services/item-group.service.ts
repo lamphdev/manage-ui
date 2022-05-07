@@ -19,9 +19,9 @@ export class ItemGroupService {
     const result: Page<any> = {
       content: data,
       page: page,
-      size: limit,
-      totalElements: fakeDataGroup.length,
-      totalPages: Math.ceil(fakeDataGroup.length / limit)
+      limit: limit,
+      totals: fakeDataGroup.length,
+      pages: Math.ceil(fakeDataGroup.length / limit)
     }
     return new BehaviorSubject<Page<any>>(result).pipe(delay(1000));
   }
